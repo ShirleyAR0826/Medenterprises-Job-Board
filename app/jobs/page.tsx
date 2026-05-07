@@ -1,6 +1,25 @@
+import { Metadata } from 'next'
 import { getJobs } from '@/lib/jobs/jobs.service'
 import JobCard from '@/components/JobCard'
 import JobFilters from '@/components/JobFilters'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Medical Jobs | Medenterprises',
+    description:
+      'Browse medical career opportunities across New Zealand.',
+    alternates: {
+      canonical: '/jobs'
+    },
+    openGraph: {
+      title: 'Medical Jobs | Medenterprises',
+      description:
+        'Browse medical career opportunities across New Zealand.',
+      url: '/jobs',
+      type: 'website'
+    }
+  }
+}
 
 type Props = {
   searchParams: Promise<{
