@@ -1,5 +1,6 @@
 import { getJobs } from '@/lib/jobs/jobs.service'
 import JobCard from '@/components/JobCard'
+import JobFilters from '@/components/JobFilters'
 
 type Props = {
   searchParams: Promise<{
@@ -18,6 +19,18 @@ export default async function JobsPage({
     type: params.type
   })
 
+  const allJobs = await getJobs()
+
+  const departments = [
+    ...new Set(
+      allJobs.map((job) => job.department)
+    )
+  ]
+
+  const types = [
+    ...new Set(allJobs.map((job) => job.type))
+  ]
+
   return (
     <main className="mx-auto max-w-5xl px-6 py-10">
       <div className="mb-8">
@@ -29,6 +42,11 @@ export default async function JobsPage({
           Browse current opportunities across New Zealand.
         </p>
       </div>
+
+      <JobFilters
+        departments={departments}
+        types={types}
+      />
 
       <div className="grid gap-4">
         {jobs.map((job) => (
