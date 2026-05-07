@@ -179,3 +179,9 @@ Before production deployment, additional work would include:
 AI tools were used to assist with implementation planning, architecture discussions, and code generation support.
 
 All submitted code was reviewed, modified, and fully understood before submission.
+
+---
+
+# Live Demo
+
+https://medenterprises-job-board.vercel.app
