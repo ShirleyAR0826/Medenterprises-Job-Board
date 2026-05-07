@@ -1,11 +1,14 @@
-import { getJobs } from '@/lib/jobs/jobs.service'
+import Link from 'next/link'
 
-export default async function Home() {
-  const jobs = await getJobs()
-
+export default function Home() {
   return (
-    <main>
-      <h1>{jobs.length} jobs loaded</h1>
+    <main className="flex min-h-screen items-center justify-center">
+      <Link
+        href="/jobs"
+        className="rounded bg-black px-5 py-3 text-white"
+      >
+        View Jobs
+      </Link>
     </main>
   )
 }
