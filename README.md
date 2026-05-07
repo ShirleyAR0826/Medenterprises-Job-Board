@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Medenterprises Job Board Exercise
 
-## Getting Started
+A job listing platform built with Next.js App Router, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+The application renders SEO-friendly medical job listings with dynamic routing, structured data, analytics tracking, filtering, and sitemap generation.
+
+---
+
+# Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Vitest
+- React Testing Library
+
+---
+
+# Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run tests:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Features
 
-To learn more about Next.js, take a look at the following resources:
+- Job listings index page
+- Dynamic job detail pages
+- URL-based filtering
+- SEO metadata with canonical tags
+- Open Graph metadata
+- JobPosting JSON-LD structured data
+- Dynamic sitemap.xml generation
+- GTM-style analytics tracking
+- 404 handling for invalid job slugs
+- Unit and integration test coverage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Rendering Strategy
 
-## Deploy on Vercel
+The application uses Static Site Generation (SSG) with Next.js App Router and static route generation for job detail pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This approach was chosen because job boards are highly SEO-driven and mostly read-heavy applications. Static rendering improves:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- page load performance
+- crawlability
+- SEO consistency
+- infrastructure efficiency
+
+The architecture also supports Incremental Static Regeneration (ISR) if the external feed updates periodically.
+
+---
+
+# Data Layer Architecture
+
+The data fetching layer is intentionally separated from the rendering layer.
+
+Architecture flow:
+
+```txt
+UI → service layer → repository layer → data source
+```
+
+This allows the JSON fixture to later be replaced with:
+
+- external REST APIs
+- GraphQL feeds
+- ATS integrations
+- CMS platforms
+
+without affecting the UI layer.
+
+---
+
+# Analytics Tracking
+
+The Apply button uses a reusable analytics abstraction that mirrors a real Google Tag Manager implementation via `window.dataLayer.push()`.
+
+This structure can later integrate with:
+
+- Google Analytics 4
+- Segment
+- Mixpanel
+- other analytics providers
+
+without modifying UI components.
+
+---
+
+# Sitemap
+
+The application generates a dynamic sitemap using Next.js Metadata Routes.
+
+Included URLs:
+
+- `/jobs`
+- all dynamic job detail pages
+
+---
+
+# Testing
+
+The project includes:
+
+- unit tests for filtering logic
+- integration tests for UI rendering
+
+using Vitest and React Testing Library.
+
+---
+
+# Trade-offs
+
+Due to time constraints, the implementation intentionally prioritised:
+
+- architecture
+- SEO
+- maintainability
+- clean separation of concerns
+
+over advanced UI polish or additional product features.
+
+The filtering system was intentionally kept simple instead of implementing a more advanced faceted search experience.
+
+Pagination and full-text search were also omitted to focus on the core assessment requirements.
+
+---
+
+# Next Steps
+
+If given more time, the next improvements would include:
+
+- pagination
+- full-text search
+- accessibility audit
+- loading skeletons
+- feed validation
+- error monitoring
+- CMS or ATS integration
+- analytics dashboarding
+- CI/CD pipeline improvements
+
+---
+
+# Production Readiness Considerations
+
+Before production deployment, additional work would include:
+
+- observability and monitoring
+- rate limiting
+- security headers
+- caching strategy
+- analytics dashboards
+- automated accessibility testing
+- structured logging
+- uptime monitoring
+
+---
+
+# AI Usage
+
+AI tools were used to assist with implementation planning, architecture discussions, and code generation support.
+
+All submitted code was reviewed, modified, and fully understood before submission.
