@@ -5,6 +5,7 @@ import {
   getJobs
 } from '@/lib/jobs/jobs.service'
 import JobStructuredData from '@/components/JobStructuredData'
+import ApplyButton from '@/components/ApplyButton'
 
 type Props = {
   params: Promise<{
@@ -146,6 +147,10 @@ export default async function JobDetailPage({
                 )
               )}
             </ul>
+
+            <div className="mt-8">
+              <ApplyButton job={job} />
+            </div>
           </section>
         </div>
       </main>
