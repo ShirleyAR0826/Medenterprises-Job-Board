@@ -49,7 +49,9 @@ export default function JobFilters({
         }
         className="rounded border p-3"
       >
-        <option value="">
+        <option value=""
+          className="text-gray-500 bg-gray-100"
+        >
           All Departments
         </option>
 
@@ -57,6 +59,7 @@ export default function JobFilters({
           <option
             key={department}
             value={department}
+            className="text-gray-500 bg-gray-100"
           >
             {department}
           </option>
@@ -70,7 +73,9 @@ export default function JobFilters({
         }
         className="rounded border p-3"
       >
-        <option value="">
+        <option value=""
+          className="text-gray-500 bg-gray-100"
+        >
           All Employment Types
         </option>
 
@@ -78,6 +83,7 @@ export default function JobFilters({
           <option
             key={type}
             value={type}
+            className="text-gray-500 bg-gray-100"
           >
             {type}
           </option>

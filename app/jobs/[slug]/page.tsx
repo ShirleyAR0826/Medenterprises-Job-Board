@@ -63,28 +63,28 @@ export default async function JobDetailPage({
     <>
       <JobStructuredData job={job} />
       <main className="mx-auto max-w-4xl px-6 py-10">
-        <div className="space-y-6">
+        <div className="space-y-10">
           <div>
             <h1 className="text-4xl font-bold">
               {job.title}
             </h1>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded bg-gray-100 px-3 py-1">
+              <span className="rounded-md bg-gray-800 px-3 py-1 text-sm text-gray-200">
                 {job.location}
               </span>
 
-              <span className="rounded bg-gray-100 px-3 py-1">
+              <span className="rounded-md bg-gray-800 px-3 py-1 text-sm text-gray-200">
                 {job.type}
               </span>
 
-              <span className="rounded bg-gray-100 px-3 py-1">
+              <span className="rounded-md bg-gray-800 px-3 py-1 text-sm text-gray-200">
                 {job.department}
               </span>
             </div>
           </div>
 
-          <div className="grid gap-4 rounded-lg border p-5 md:grid-cols-2">
+          <div className="grid gap-6 rounded-xl border border-gray-800 bg-black p-6 md:grid-cols-2">
             <div>
               <div className="text-sm text-gray-500">
                 Salary Range
